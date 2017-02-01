@@ -1,0 +1,493 @@
+html,
+body {
+    font-family: 'Microsoft JhengHei', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+    /*font-family: 'Open Sans','Helvetica Neue',Arial,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;*/
+    color: #fff;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+
+a {
+    color: #fff;
+}
+
+.contentWar {
+    height: 100%;
+    min-height: 600px;
+    width: 100%;
+    position: relative;
+}
+
+.contentMain {
+    position: relative;
+    z-index: 910;
+    height: 500px;
+    width: 1000px;
+}
+
+
+/*mask-----------------------------------------------------------------*/
+
+div.mask {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(102, 102, 102, 0.6);
+}
+
+
+/*content-----------------------------------------------------------------*/
+
+.content {
+    z-index: 900;
+    height: auto;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.war {
+    width: 100%;
+    min-height: 600px;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+/*home--------------------------*/
+
+@-webkit-keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.war-1 {
+    background: -webkit-linear-gradient(45deg, #59ADEB 10%, #35CE93 90%);
+    background: linear-gradient(45deg, #59ADEB 10%, #35CE93 90%);
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+}
+
+.war-content-1 {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.qrcode {
+    /*float: left;*/
+    position: absolute;
+    top: 60px;
+    right: 0;
+    z-index: 1000;
+}
+
+.weixin {
+    -webkit-transform: translate3d(-3000px, 0, 0);
+    transform: translate3d(-3000px, 0, 0);
+}
+
+.war-content-info {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .war-content-info {
+        margin-top: 60px;
+    }
+}
+
+.info-photo {
+    height: 200px;
+    width: 200px;
+    margin: 0 20px;
+    border-radius: 100%;
+    border: 8px solid rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.info-photo>img {
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.info-data {
+    width: 320px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.info-name {
+    opacity: 0;
+    font: 700 20px "simsun";
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.info-line {
+    width: 280px;
+    height: 2px;
+    border-radius: 100%;
+    background: #fff;
+}
+
+.info-enjoy,
+.info-email,
+.info-major {
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Microsoft YaHei';
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.info-iphone,
+.info-education,
+.info-exprience {
+    opacity: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Microsoft YaHei';
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.war-talk-myself {
+    display: none;
+    width: 680px;
+    margin: 0 auto;
+    font-family: 'Microsoft YaHei';
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.war-talk-myself p {
+    line-height: 1.5;
+}
+
+.war-talk-myself p:first-child {
+    font-size: 18px;
+    font-style: italic;
+    line-height: 2;
+}
+
+@media (min-width: 768px) {
+    .war-talk-myself {
+        display: block;
+    }
+}
+
+
+/*info-------------------------*/
+
+
+/*.war-2 {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    -o-filter: blur(2px);
+}*/
+
+.war-content-2 {}
+
+.container .title {
+    display: none;
+    margin-top: 20px;
+    padding-bottom: 5px;
+    font-size: 22px;
+    line-height: 1.5;
+    border-bottom: #fff solid 1px;
+}
+
+.work-item {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.work-logo img {
+    width: 200px;
+}
+
+.work-name {
+    margin-top: 5px;
+}
+
+.work-name p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.work-content {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.work-picture {
+    display: none;
+    margin-top: 15px;
+}
+
+@media (min-width: 768px) {
+    .work-picture {
+        display: block;
+    }
+}
+
+.work-picture img {
+    width: 100%;
+}
+
+
+/*project oa-mobile-----------------------------*/
+
+.war-3 {
+    background: -webkit-radial-gradient(circle, rgb(189, 232, 127) 10%, rgb(60, 215, 215) 90%);
+    background: radial-gradient(circle, rgb(189, 232, 127) 10%, rgb(60, 215, 215) 90%);
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+}
+
+.war-content-3 {}
+
+.project-item {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.project-info {
+    margin-top: 5px;
+}
+
+.project-info p {
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.project-info a {
+    text-decoration: underline;
+    color: dodgerblue;
+}
+
+.project-content,
+.project-content p {
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.my-gallery {
+    display: none;
+}
+
+.my-gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.my-gallery figcaption {
+    display: none;
+}
+
+.my-gallery figure {
+    margin-bottom: 15px;
+}
+
+
+/*project react---------------------------*/
+
+.war-4 {}
+
+.war-content-4 {}
+
+
+/*project ocp--------------------------*/
+
+.war-5 {
+    position: relative;
+    background: -webkit-linear-gradient(left, lightseagreen, lightgray, deepskyblue);
+    background: linear-gradient(left, lightseagreen, lightgray, deepskyblue);
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+}
+
+
+/*project bs3--------------------------*/
+
+.war-6 {}
+
+.war-content-6 {}
+
+
+/*project lg7-------------------------*/
+
+.war-7 {
+    position: relative;
+    background: -webkit-linear-gradient(135deg, rgb(189, 232, 127) 10%, mediumturquoise 90%);
+    background: -webkit-linear-gradient(315deg, rgb(189, 232, 127) 10%, mediumturquoise 90%);
+    background: linear-gradient(135deg, rgb(189, 232, 127) 10%, mediumturquoise 90%);
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+}
+
+.war-content-7 {}
+
+
+/*project ssl-------------------------*/
+
+.war-8 {}
+
+.war-content-8 {}
+
+
+/*education-------------------------*/
+
+.war-9 {
+    position: relative;
+    background: -webkit-radial-gradient(circle, rgb(251, 229, 130), rgb(185, 229, 130), rgb(167, 228, 253));
+    background: radial-gradient(circle, rgb(251, 229, 130), rgb(185, 229, 130), rgb(167, 228, 253));
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+}
+
+.war-content-9 {}
+
+.education-item {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.education-logo img {
+    width: 200px;
+}
+
+.education-info {
+    margin-top: 5px;
+}
+
+.education-info p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.education-content,
+.education-content p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/*education-------------------------*/
+
+.war-10 {}
+
+.war-content-9 {}
+
+.introducation-item {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.introducation-content,
+.introducation-content p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/*aside-----------------------------------------------------------------*/
+
+aside {
+    z-index: 1000;
+    width: 24px;
+    height: auto;
+    position: fixed;
+    right: 20px;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 34px;
+}
+
+@media (min-width: 768px) {
+    aside {
+        right: 50px;
+    }
+}
+
+.page {
+    height: 16px;
+    width: 16px;
+    margin: 20px 5px;
+    line-height: 16px;
+    /*background: url('../images/ico_bg.png') 0 -50px no-repeat;*/
+    position: relative;
+    cursor: pointer;
+}
+
+.page:hover .page-title {
+    display: block;
+}
+
+.page-title {
+    position: absolute;
+    height: 14px;
+    width: 130px;
+    padding-right: 10px;
+    text-align: right;
+    color: #fff;
+    line-height: 14px;
+    font-size: 14px;
+    right: 100%;
+    top: 0;
+    display: none;
+}
