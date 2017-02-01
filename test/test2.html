@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>气球背景</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .wrap {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            filter: blur(2px);
+            -webkit-filter: blur(2px);
+            -moz-filter: blur(2px);
+            -ms-filter: blur(2px);
+            -o-filter: blur(2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bubble" class="wrap"></div>
+    <script type="text/javascript">
+        var bubble = function(el) {
+            var that = this;
+            this.content = null;
+            this.move = true;
+            this.data = {
+                radiusRange: [5, 45],
+                speedRange: [-5, 5],
+                scrollHeight: null,
+                scrollWdith: null,
+                renderNumer: 10
+            };
+            this.bgColors = [
+                'rgba(242, 248, 254, .4)',
+                'rgba(185, 224, 255, .4)',
+                'rgba(149, 152, 157, .5)',
+                'rgba(189, 232, 127, .5)',
+                'rgba(141, 196, 253, .6)',
+                'rgba(167, 228, 112, .6)',
+                'rgba(244, 198, 113, .6)',
+                'rgba(131, 183, 245, .6)'
+            ];
+            this.balls = [];
+            this.ele = {
+                wrap: el,
+                canvas: document.createElement('canvas')
+            };
+
+            this.creatRandom = function(startInt, endInt) { //生产随机数
+                var iResult;
+                iResult = startInt + (Math.floor(Math.random() * (endInt - startInt + 1)));
+                return iResult
+            };
+            this.init = function() {
+                that.data.scrollWdith = that.ele.wrap.scrollWidth;
+                that.data.scrollHeight = that.ele.wrap.scrollHeight;
+                that.content = that.ele.canvas.getContext('2d');
+                that.ele.canvas.width = that.data.scrollWdith;
+                that.ele.canvas.height = that.data.scrollHeight;
+
+                that.data.renderNumer = Math.round(that.ele.canvas.width * that.ele.canvas.height / (Math.pow(30, 2) * that.creatRandom(10, 15)));
+                for (var i = 0; i < that.data.renderNumer; i++) {
+                    that.addBall();
+                }
+                that.drawBall();
+                that.ele.wrap.style.background = that.bgColors[that.creatRandom(0, 7)] + ' url(' + that.ele.canvas.toDataURL() + ')';
+                if (that.move) that.handleDevice();
+            };
+            this.addBall = function() {
+                var aRandomColor = [];
+                aRandomColor.push(that.creatRandom(130, 255));
+                aRandomColor.push(that.creatRandom(130, 255));
+                aRandomColor.push(that.creatRandom(120, 255));
+                var iRandomRadius = that.creatRandom(that.data.radiusRange[0], that.data.radiusRange[1]);
+                var oTempBall = {
+                    coordsX: that.creatRandom(iRandomRadius, that.ele.canvas.width - iRandomRadius),
+                    coordsY: that.creatRandom(iRandomRadius, that.ele.canvas.height - iRandomRadius),
+                    radius: iRandomRadius,
+                    bgColor: 'rgba(' + aRandomColor[0] + ',' + aRandomColor[1] + ',' + aRandomColor[2] + ', 0.5)'
+                };
+                that.balls.push(oTempBall)
+            };
+            this.drawBall = function() {
+                var i, iSize;
+                for (var i = 0, iSize = that.balls.length; i < iSize; i++) {
+                    var oTarger = that.balls[i];
+                    that.content.beginPath();
+                    that.content.arc(oTarger.coordsX, oTarger.coordsY, oTarger.radius, 0, 10);
+                    that.content.fillStyle = oTarger.bgColor;
+                    that.content.globalAlpha = that.creatRandom(1, 9) * 0.1;
+                    that.content.fill();
+                }
+            };
+            this.handleDevice = function() {
+                window.requestAnimFrame = (function() {
+                    return window.requestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        function(callback) {
+                            window.setTimeout(callback, 42);
+                        };
+                })();
+                var timefragment = 0, // 时间片计时
+                    animating = false, //时候动效中
+                    startBeta = 0,
+                    startGamma = 0,
+                    endTop,
+                    endLeft; // 当前变化度数
+
+                var nTop = 0,
+                    nLeft = 0;
+                window.addEventListener('deviceorientation', function(e) {
+                    var nowts = new Date().getTime();
+                    // 控制时间片
+                    if (nowts - timefragment > 1000 && !animating) {
+                        timefragment = nowts;
+                        var beta = Math.round(e.beta), //横向 X 轴 -180 ~ 180
+                            gamma = Math.round(e.gamma); //纵向 Y 轴 -90 ~ 90
+                        var _beta = beta - startBeta,
+                            _gamma = gamma - startGamma;
+                        startBeta = beta;
+                        startGamma = gamma;
+                        var _top = Math.round(_beta / 180 * 20),
+                            _left = Math.round(_gamma / 90 * 10);
+                        requestAnimationFrame(step);
+                        endTop = nTop + _top;
+                        endLeft = nLeft + _left;
+                    }
+
+                    function step() {
+                        animating = true;
+                        nTop = parseInt(that.ele.wrap.style.backgroundPositionY, 10) || 0,
+                            nLeft = parseInt(that.ele.wrap.style.backgroundPositionX, 10) || 0;
+
+                        nTop = _top === 0 || nTop == endTop ? nTop : _top > 0 ? ++nTop : --nTop;
+                        nLeft = _left === 0 || nLeft == endLeft ? nLeft : _left > 0 ? ++nLeft : --nLeft;
+
+                        that.ele.wrap.style.backgroundPositionY = nTop + 'px';
+                        that.ele.wrap.style.backgroundPositionX = nLeft + 'px';
+                        if (nTop != endTop || nLeft != endLeft) {
+                            requestAnimationFrame(step);
+                        } else {
+                            animating = false;
+                        }
+                    }
+                }, false);
+            }
+
+            this.init();
+        }
+        window.onload = function() {
+            new bubble(document.getElementById('bubble'));
+        }
+    </script>
+</body>
+
+</html>

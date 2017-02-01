@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>气球背景</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            position: absolute;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            background: -webkit-linear-gradient(top, #111, #111ddd);
+        }
+    </style>
+</head>
+
+<body onload="readyFn();">
+    <div class="wrap">
+        <canvas id="bubble"></canvas>
+    </div>
+    <script>
+        function readyFn() {
+            var dom = document.querySelector('.wrap'),
+                img = dom.querySelector('canvas');
+            var IMG_W = parseInt(window.getComputedStyle(img)['width']),
+                IMG_H = parseInt(window.getComputedStyle(img)['height']);
+            var WIN_W = document.documentElement.clientWidth,
+                WIN_H = document.documentElement.clientHeight;
+            // 设置默认的left/top
+            dom.style.top = -(IMG_H - WIN_H) / 2 + 'px';
+            dom.style.left = -(IMG_W - WIN_W) / 2 + 'px';
+
+            var timefragment = 0, // 时间片计时
+                animation = false,
+                CX = 0,
+                CY = 0,
+                EX,
+                EY; // 当前变化度数
+            window.addEventListener('deviceorientation', function(e) {
+                var nowts = new Date().getTime();
+                // 控制时间片
+                if (nowts - timefragment > 1000 && !animation) {
+                    timefragment = nowts;
+                    var alpha = e.alpha, //垂直于屏幕的轴 0 ~ 360
+                        beta = e.beta, //横向 X 轴 -180 ~ 180
+                        gamma = e.gamma; //纵向 Y 轴 -90 ~ 90
+                    var _CY = beta - CY;
+                    var _CX = gamma - CX;
+                    CY = beta;
+                    CX = gamma;
+                    var _y, _x;
+                    _y = Math.round(_CY / 180 * 200);
+                    _x = Math.round(_CX / 90 * 100);
+                    requestAnimationFrame(step);
+                    EY = parseInt(dom.style.top, 10) + _y;
+                    EX = parseInt(dom.style.left, 10) + _x;
+                }
+
+                function step() {
+                    animation = true;
+                    var _top = parseInt(dom.style.top, 10),
+                        _left = parseInt(dom.style.left, 10);
+                    dom.style.top = _y == 0 || Math.ceil(parseInt(dom.style.top, 10)) == EY ? _top : _y > 0 ? (++_top + 'px') : (--_top + 'px');
+                    dom.style.left = _x == 0 || Math.ceil(parseInt(dom.style.left, 10)) == EX ? _left : _x > 0 ? (++_left + 'px') : (--_left + 'px');
+                    if (parseInt(dom.style.top, 10) != EY || parseInt(dom.style.left, 10) != EX) {
+                        requestAnimationFrame(step);
+                    } else {
+                        animation = false;
+                    }
+                }
+            }, false);
+        }
+    </script>
+</body>
+
+</html>
