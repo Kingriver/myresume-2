@@ -387,8 +387,7 @@ div.mask {
 
 .war-content-8 {}
 
-
-/*education-------------------------*/
+/*project eui-------------------------*/
 
 .war-9 {
     position: relative;
@@ -400,6 +399,12 @@ div.mask {
 }
 
 .war-content-9 {}
+
+/*education-------------------------*/
+
+.war-10 {}
+
+.war-content-10 {}
 
 .education-item {
     display: none;
@@ -427,11 +432,18 @@ div.mask {
 }
 
 
-/*education-------------------------*/
+/*introduction-------------------------*/
 
-.war-10 {}
+.war-11 {
+    position: relative;
+    background: -webkit-radial-gradient(circle, #59adeb, #7ed4f7, #3e5c9a);
+    background: radial-gradient(circle, #59adeb, #7ed4f7, #3e5c9a);
+    background-size: 200% 100% !important;
+    -webkit-animation: move 10s ease infinite;
+    animation: move 10s ease infinite;
+}
 
-.war-content-9 {}
+.war-content-11 {}
 
 .introducation-item {
     display: none;

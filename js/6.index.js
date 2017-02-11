@@ -21,7 +21,7 @@ $(document).ready(function() {
         scrollingSpeed: 500,
         css3: true,
         scrollOverflow: false,
-        anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10'],
+        anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9', 'page10', 'page11'],
         menu: 'header,aside',
         verticalCentered: false,
 
@@ -73,20 +73,28 @@ $(document).ready(function() {
             if (index == 6) {
                 $('#war-project-4 .title').hide();
                 $('#war-project-4 .project-item').hide();
+                $('#war-project-4 .my-gallery').hide();
             }
             if (index == 7) {
                 $('#war-project-5 .title').hide();
                 $('#war-project-5 .project-item').hide();
+                $('#war-project-5 .my-gallery').hide();
             }
             if (index == 8) {
                 $('#war-project-6 .title').hide();
                 $('#war-project-6 .project-item').hide();
             }
             if (index == 9) {
-                $('#war-education .title').hide();
-                $('#war-education .education-item').hide();
+                $('#war-project-7 .title').hide();
+                $('#war-project-7 .project-item').hide();
+                $('#war-project-7 .my-gallery').hide();
             }
             if (index == 10) {
+                $('#war-education .title').hide();
+                $('#war-education .education-item').hide();
+                $('#war-education .my-gallery').hide();
+            }
+            if (index == 11) {
                 $('#war-introducation .title').hide();
                 $('#war-introducation .introducation-item').hide();
             }
@@ -152,20 +160,22 @@ $(document).ready(function() {
                 $('.page').removeClass('icon-kongxinyuan');
                 $('#page-project-4').addClass('icon-kongxinyuan');
                 if (!$('#war-project-4')[0].style.backgroundImage) $('#war-project-4').bubble();
+                $('#war-project-4 .my-gallery').initPhotoSwipeFromDOM();
 
                 $('#war-project-4 .title').fadeIn(500, function() {
                     $('#war-project-4 .project-item').fadeIn(300, function() {
-                        // $('#war-project-4 .my-gallery').fadeIn(300);
+                        $('#war-project-4 .my-gallery').fadeIn(300);
                     });
                 });
             }
             if (index == 7) {
                 $('.page').removeClass('icon-kongxinyuan');
                 $('#page-project-5').addClass('icon-kongxinyuan');
+                $('#war-project-5 .my-gallery').initPhotoSwipeFromDOM();
 
                 $('#war-project-5 .title').fadeIn(500, function() {
                     $('#war-project-5 .project-item').fadeIn(300, function() {
-                        // $('#war-project-5 .my-gallery').fadeIn(300);
+                        $('#war-project-5 .my-gallery').fadeIn(300);
                     });
                 });
             }
@@ -182,18 +192,30 @@ $(document).ready(function() {
             }
             if (index == 9) {
                 $('.page').removeClass('icon-kongxinyuan');
-                $('#page-education').addClass('icon-kongxinyuan');
+                $('#page-project-7').addClass('icon-kongxinyuan');
+                $('#war-project-7 .my-gallery').initPhotoSwipeFromDOM();
 
-                $('#war-education .title').fadeIn(500, function() {
-                    $('#war-education .education-item').fadeIn(300, function() {
-                        // $('#war-education .education-content').fadeIn(300);
+                $('#war-project-7 .title').fadeIn(500, function() {
+                    $('#war-project-7 .project-item').fadeIn(300, function() {
+                        $('#war-project-7 .my-gallery').fadeIn(300);
                     });
                 });
             }
             if (index == 10) {
                 $('.page').removeClass('icon-kongxinyuan');
+                $('#page-education').addClass('icon-kongxinyuan');
+                if (!$('#war-education')[0].style.backgroundImage) $('#war-education').bubble();
+                $('#war-education .my-gallery').initPhotoSwipeFromDOM();
+
+                $('#war-education .title').fadeIn(500, function() {
+                    $('#war-education .education-item').fadeIn(300, function() {
+                        $('#war-education .my-gallery').fadeIn(300);
+                    });
+                });
+            }
+            if (index == 11) {
+                $('.page').removeClass('icon-kongxinyuan');
                 $('#page-introducation').addClass('icon-kongxinyuan');
-                if (!$('#war-introducation')[0].style.backgroundImage) $('#war-introducation').bubble();
 
                 $('#war-introducation .title').fadeIn(500, function() {
                     $('#war-introducation .introducation-item').fadeIn(300, function() {});
