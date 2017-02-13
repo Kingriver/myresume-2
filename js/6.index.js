@@ -52,6 +52,7 @@ $(document).ready(function() {
                 $.pswpElement = null;
                 $.gallery = null;
             }
+            $('.my-gallery').hide();
             if (index == 2) {
                 $('#war-experience .title').hide();
                 $('#war-experience .work-item').hide();
@@ -59,7 +60,6 @@ $(document).ready(function() {
             if (index == 3) {
                 $('#war-project-1 .title').hide();
                 $('#war-project-1 .project-item').hide();
-                $('#war-project-1 .my-gallery').hide();
             }
             if (index == 4) {
                 $('#war-project-2 .title').hide();
@@ -68,17 +68,14 @@ $(document).ready(function() {
             if (index == 5) {
                 $('#war-project-3 .title').hide();
                 $('#war-project-3 .project-item').hide();
-                $('#war-project-3 .my-gallery').hide();
             }
             if (index == 6) {
                 $('#war-project-4 .title').hide();
                 $('#war-project-4 .project-item').hide();
-                $('#war-project-4 .my-gallery').hide();
             }
             if (index == 7) {
                 $('#war-project-5 .title').hide();
                 $('#war-project-5 .project-item').hide();
-                $('#war-project-5 .my-gallery').hide();
             }
             if (index == 8) {
                 $('#war-project-6 .title').hide();
@@ -87,12 +84,10 @@ $(document).ready(function() {
             if (index == 9) {
                 $('#war-project-7 .title').hide();
                 $('#war-project-7 .project-item').hide();
-                $('#war-project-7 .my-gallery').hide();
             }
             if (index == 10) {
                 $('#war-education .title').hide();
                 $('#war-education .education-item').hide();
-                $('#war-education .my-gallery').hide();
             }
             if (index == 11) {
                 $('#war-introducation .title').hide();
