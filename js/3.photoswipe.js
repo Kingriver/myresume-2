@@ -976,6 +976,8 @@
                 _unbindEvents();
 
                 _showOrHide(self.currItem, null, true, self.destroy);
+
+                if ($.fn.fullpage) $.fn.fullpage.setAllowScrolling(true);
             },
 
             // destroys the gallery (unbinds events, cleans up intervals and timeouts to avoid memory leaks)
@@ -1335,7 +1337,7 @@
          * separated from @core.js for readability
          */
 
-        var MIN_SWIPE_DISTANCE = 30,
+        var MIN_SWIPE_DISTANCE = 20,
             DIRECTION_CHECK_OFFSET = 10; // amount of pixels to drag to determine direction of swipe
 
         var _gestureStartTime,

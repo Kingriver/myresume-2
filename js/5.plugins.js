@@ -606,6 +606,7 @@
             // Pass data to PhotoSwipe and initialize it
             $.gallery = new PhotoSwipe($.pswpElement, PhotoSwipeUI_Default, items, options);
             $.gallery.init();
+            if ($.fn.fullpage) $.fn.fullpage.setAllowScrolling(false);
         };
 
         // loop through all gallery elements and bind events

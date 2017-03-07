@@ -199,7 +199,6 @@ $(document).ready(function() {
             if (index == 10) {
                 $('.page').removeClass('icon-kongxinyuan');
                 $('#page-education').addClass('icon-kongxinyuan');
-                if (!$('#war-education')[0].style.backgroundImage) $('#war-education').bubble();
                 $('#war-education .my-gallery').initPhotoSwipeFromDOM();
 
                 $('#war-education .title').fadeIn(500, function() {
